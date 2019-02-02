@@ -52,7 +52,8 @@ EXPORT int convert_gpio_pin(const char *pin_str)
 			strncat(pin_buf, ppin, 2);
 			pin = atoi(pin_buf);
 		}
-		ret = port * 32 + pin;
+		//ret = port * 32 + pin;
+		ret = port * 32 + pin+1;
 	}
 	return ret;
 }
