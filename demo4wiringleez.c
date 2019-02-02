@@ -1,13 +1,13 @@
-#include "wiringpi.h"
+#include "wiringleez.h"
 int main()
 {
-	pinMode(GPIO4_30, OUTPUT);//ÉèÖÃÎªÊä³ö
-	digitalWrite(GPIO4_30, HIGH);//ÉèÖÃÎª¸ß
+	pinMode(GPIO4_30, OUTPUT);//è®¾ç½®ä¸ºè¾“å‡º
+	digitalWrite(GPIO4_30, HIGH);//è®¾ç½®ä¸ºé«˜
 	sleep(1);
-	digitalWrite(GPIO4_30, LOW);//ÉèÖÃÎªµÍ
+	digitalWrite(GPIO4_30, LOW);//è®¾ç½®ä¸ºä½
 	sleep(1);
-	digitalWrite(GPIO4_30, HIGH);//ÉèÖÃÎªÊäÈë
+	digitalWrite(GPIO4_30, HIGH);//è®¾ç½®ä¸ºè¾“å…¥
 	pinMode(GPIO4_30, INPUT); 
-	int pin4_30 = digitalRead(GPIO4_30);//¶ÁÈ¡IOµçÆ½¸ßµÍ
+	int pin4_30 = digitalRead(GPIO4_30);//è¯»å–IOç”µå¹³é«˜ä½
 	return 0;
 }
