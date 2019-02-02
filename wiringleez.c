@@ -1,24 +1,24 @@
 /*
 *********************************************************************************************************
 *
-*	ÎÄ¼şÃû : wiringleez.c
-*	ĞŞ¸Ä×Ô : sl_gpio.c
-*   Ëµ    Ã÷ : Ğìçæ¾¸ÔÚSourcelinkµÄgpio¿âµÄ»ù´¡ÉÏ£¬¸Ä³ÉÁËarduino¼æÈİµÄÊı×ÖIOº¯Êı
+*	æ–‡ä»¶å : wiringleez.c
+*	ä¿®æ”¹è‡ª : sl_gpio.c
+*   è¯´    æ˜ : å¾ç‚é–åœ¨Sourcelinkçš„gpioåº“çš„åŸºç¡€ä¸Šï¼Œæ”¹æˆäº†arduinoå…¼å®¹çš„æ•°å­—IOå‡½æ•°
 *
 *
 *********************************************************************************************************
 */
-#include "wiringpi.h"
+#include "wiringleez.h"
 #include "so_lib.h"
 
 DEBUG_SET_LEVEL(DEBUG_LEVEL_ERR);
 
 
 /*
-°Ñ±ê×¼×Ö·ûµÄio±ê×¢×ª»»³ÉgpioÏµÍ³ÖĞµÄio±êºÅ
-½âÎögpio£»gpioµÄ¶Ë¿Ú¶¼´Ó0¿ªÊ¼£¬Ïñimx6ulgpioÊÇ´Ó1¿ªÊ¼
-Òª×Ô¶¯ÏòÇ°ÒÆÒ»Î»£¬Ô­ÀíÍ¼ÉÏ±ê×¢GPIO5_01, Êµ¼ÊÔÚ³ÌĞòÊÇÒªÌîĞ´GPIO4_01
-Õâ¸ö½á¹¹»¹ĞèÒªĞŞ¸Ä
+æŠŠæ ‡å‡†å­—ç¬¦çš„ioæ ‡æ³¨è½¬æ¢æˆgpioç³»ç»Ÿä¸­çš„ioæ ‡å·
+è§£ægpioï¼›gpioçš„ç«¯å£éƒ½ä»0å¼€å§‹ï¼Œåƒimx6ulgpioæ˜¯ä»1å¼€å§‹
+è¦è‡ªåŠ¨å‘å‰ç§»ä¸€ä½ï¼ŒåŸç†å›¾ä¸Šæ ‡æ³¨GPIO5_01, å®é™…åœ¨ç¨‹åºæ˜¯è¦å¡«å†™GPIO4_01
+è¿™ä¸ªç»“æ„è¿˜éœ€è¦ä¿®æ”¹
 */
 EXPORT int convert_gpio_pin(const char *pin_str)
 {
@@ -78,7 +78,7 @@ EXPORT int unexport_gpio_pin(int pin)
 }
 
 /*
-¸´Î»³É¹¦·µ»Ø0,·ñÔò·µ»Ø-1
+å¤ä½æˆåŠŸè¿”å›0,å¦åˆ™è¿”å›-1
 */
 EXPORT int set_gpio_value(int pin, int value)
 {
@@ -131,7 +131,7 @@ EXPORT int get_gpio_direction(int pin)
 
 	ret = read_value_from_file(fileName, buff, sizeof(buff) - 1);
 	if (ret > 0) {
-		/* ²»Çø·Ö´óĞ¡Ğ´±È½Ï */
+		/* ä¸åŒºåˆ†å¤§å°å†™æ¯”è¾ƒ */
 		if (strncasecmp(buff, "out", 3)) {
 			ret = OUTPUT;
 		}
@@ -147,8 +147,8 @@ EXPORT int get_gpio_direction(int pin)
 }
 
 /*
-pinModeº¯Êı¶ÔGPIO³õÊ¼»¯
-¾ÙÀıpinMode(GPIO4_30,OUTPUT)
+pinModeå‡½æ•°å¯¹GPIOåˆå§‹åŒ–
+ä¸¾ä¾‹pinMode(GPIO4_30,OUTPUT)
 */
 EXPORT int pinMode(const char *pin_str, int direction)
 {
@@ -161,8 +161,8 @@ EXPORT int pinMode(const char *pin_str, int direction)
 
 
 /*
-digitalWriteº¯ÊıÉèÖÃGPIO¸ßµÍµçÆ½
-¾ÙÀıdigitalWrite(GPIO4_30,HIGH)
+digitalWriteå‡½æ•°è®¾ç½®GPIOé«˜ä½ç”µå¹³
+ä¸¾ä¾‹digitalWrite(GPIO4_30,HIGH)
 */
 EXPORT int digitalWrite(const char *pin_str, int value)
 {
@@ -173,8 +173,8 @@ EXPORT int digitalWrite(const char *pin_str, int value)
 }
 
 /*
-digitalReadº¯Êı¶ÁÈ¡GPIO¸ßµÍµçÆ½
-¾ÙÀıint pin4_30=digitalRead(GPIO4_30)
+digitalReadå‡½æ•°è¯»å–GPIOé«˜ä½ç”µå¹³
+ä¸¾ä¾‹int pin4_30=digitalRead(GPIO4_30)
 */
 EXPORT int digitalRead(const char *pin_str)
 {
